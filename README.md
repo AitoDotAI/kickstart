@@ -163,16 +163,16 @@ curl --request POST \
 # 3. Setting up your own Aito
 Now we take a few steps back and start from uploading your own data into a schema. Or in case you don’t right now have suitable data available, you may download and use the same CSV files we use in this demo. The demo files are found in this repositry: "reddit_sample.csv" contains a sample of the full comments dataset and "users.csv" is a completely fabricated table to represent the Reddit users. To keep following the guide, you’ll need API keys which allow you to access your Aito instance. If you don’t have an API key yet, please contact us here.
 
-Setting up your own schema has three distinct steps. First we look at the architecture, then create an empty schema and tables, and finally upload the data into their correct tables. We highly recommend using a REST client for HTTP-API interaction.
+Setting up your own schema has three distinct steps. First we look at the schema structure, then create an empty schema and tables, and finally upload the data into their correct tables. We highly recommend using a REST client for HTTP-API interaction.
 
-## Architecture
+## Schema planning
 Very often your data is stored in a collection of connected tables. In our Reddit example, the data is divided into two tables: Comments and Users. Aito will be able to find information across linked tables, and in our case the tables are linked together with “author” column. We could also link in a third table describing for example the subreddits, daily weather or something else. At this point, you need to go through your files and determine which tables and columns are linked.
 
-![Architecture example image](https://github.com/AitoDotAI/kickstart/blob/master/Screenshot%202019-10-15%20at%2015.26.39.png)
+![Schema example image](https://github.com/AitoDotAI/kickstart/blob/master/Screenshot%202019-10-15%20at%2015.26.39.png)
 
-Now that we know the architecture, we can start creating the database schema.
+Now that we know the structure, we can start creating the database schema.
 
-## Creating an empty schema
+## Creating your Aito schema
 Now we define the tables, columns and their individual types and other specifications in JSON format. This important step is a little tedious but necessary for ensuring the correct format for the data. In the next chapter we introduce our Command Line Interface (currently alpha version) to automate some of this process.
 ```
 The structure of the JSON is following:
@@ -198,7 +198,7 @@ The structure of the JSON is following:
   }
 }
 ```
-Double check the JSON with care and add any necessary specifications such as links and text analyzers (treats the value as separate words instead of a single class). Make sure the linked columns have the same type. With our sample data, here’s how the full schema creation request looks like (replace the environment name and api key with yours):
+Double check the JSON with care and add any necessary specifications such as [links](https://aito.ai/docs/api/#post-api-v1-search) (connects two tables on one column) and [text analyzers](https://aito.ai/docs/api/#schema-analyzer) (treats the value as separate words instead of a single class). Make sure the linked columns have the same type. With our sample data, here’s how the full schema creation request looks like (replace the environment name and api key with yours):
 
 ```
 curl --request PUT \
@@ -282,8 +282,8 @@ curl --request GET \
   --header 'content-type: application/json' \
   --header 'x-api-key: your-rw-api-key'
 ```
-Uploading data to schema
-The schema expects data in a records-oriented JSON where each row is an individual item, such as:
+## Uploading data to Aito
+Aito expects data in a records-oriented JSON where each row is an individual item, such as:
 ```
 [
 {"user":"Trumpbart","registered":"2018-5-30","score":-111},
