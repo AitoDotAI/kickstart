@@ -161,7 +161,7 @@ curl --request POST \
 }'
 ```
 # 3. Setting up your own Aito
-Now we take a few steps back and start from uploading your own data into a schema. Or in case you don’t right now have suitable data available, you may download and use the same CSV files we use in this demo (download here). To keep following the guide, you’ll need API keys which allow you to access your Aito instance. If you don’t have an API key yet, please contact us here.
+Now we take a few steps back and start from uploading your own data into a schema. Or in case you don’t right now have suitable data available, you may download and use the same CSV files we use in this demo. The demo files are found in this repositry: "reddit_sample.csv" contains a sample of the full comments dataset and "users.csv" is a completely fabricated table to represent the Reddit users. To keep following the guide, you’ll need API keys which allow you to access your Aito instance. If you don’t have an API key yet, please contact us here.
 
 Setting up your own schema has three distinct steps. First we look at the architecture, then create an empty schema and tables, and finally upload the data into their correct tables. We highly recommend using a REST client for HTTP-API interaction.
 
