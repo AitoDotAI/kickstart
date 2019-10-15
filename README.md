@@ -9,7 +9,7 @@ We’ll first show you how Aito looks like in action. We have already set up a p
 
 Let’s start off with a fun example where we’ll automatically detect sarcasm in Reddit discussions. Below is a snapshot of how the data looks like. The “label” column indicates whether or not the comment is sarcastic; it is the first thing we want to predict.
 
-IMAGE HERE
+![Sample data image](https://github.com/AitoDotAI/kickstart/blob/master/Screenshot%202019-10-15%20at%2015.28.34.png)
 
 To predict if the sentence “dude you are so smart” is sarcastic on Reddit, simply copy the following query to your command line and hit enter (pay attention to the bolded parts, they are our playground):
 
@@ -168,7 +168,7 @@ Setting up your own schema has three distinct steps. First we look at the archit
 ## Architecture
 Very often your data is stored in a collection of connected tables. In our Reddit example, the data is divided into two tables: Comments and Users. Aito will be able to find information across linked tables, and in our case the tables are linked together with “author” column. We could also link in a third table describing for example the subreddits, daily weather or something else. At this point, you need to go through your files and determine which tables and columns are linked.
 
-IMAGE HERE
+![Architecture example image](https://github.com/AitoDotAI/kickstart/blob/master/Screenshot%202019-10-15%20at%2015.26.39.png)
 
 Now that we know the architecture, we can start creating the database schema.
 
