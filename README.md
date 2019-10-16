@@ -171,7 +171,7 @@ Setting up your own schema has three distinct steps. First we look at the schema
 ## Schema planning
 Very often your data is stored in a collection of connected tables. In our Reddit example, the data is divided into two tables: Comments and Users. Aito will be able to find information across linked tables, and in our case the tables are linked together with “author” column. We could also link in a third table describing for example the subreddits, daily weather or something else. At this point, you need to go through your files and determine which tables and columns are linked.
 
-![Schema example image](https://github.com/AitoDotAI/kickstart/blob/master/Screenshot%202019-10-15%20at%2015.26.39.png)
+![Schema example image](https://github.com/AitoDotAI/kickstart/blob/master/Screenshot%202019-10-16%20at%2010.26.52.png)
 
 Now that we know the structure, we can start creating the database schema.
 
