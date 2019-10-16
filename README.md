@@ -345,15 +345,15 @@ After creating the table schemas use the following command to upload each of you
 This might take a while but you’ll be able to follow the progress on the command line.
 
 ### CLI examples using the Reddit data
-Create the needed JSON files from the CSVs:  
+1. Create the needed JSON files from the CSVs:  
 ```aito convert csv -c comments_schemafile.json --json < reddit_sample.csv > comments_datafile.json```  
 ```aito convert csv -c users_schemafile.json --json < users.csv > users_datafile.json```  
 
-Create users and comments table schemas into Aito:  
+2. Create users and comments table schemas into Aito:  
 ```aito client -u https://your-env-name.api.aito.ai -r your-ro-api-key -w your-rw-api-key create-table comments < comments_schemafile.json```  
 ```aito client -u https://your-env-name.api.aito.ai -r your-ro-api-key -w your-rw-api-key create-table users < users_schemafile.json```
 
-Upload comment and user data into Aito:  
+3. Upload comment and user data into Aito:  
 ```aito client -u https://your-env-name.api.aito.ai -r your-ro-api-key -w your-rw-api-key upload-batch comments < comments_datafile.json```  
 ```aito client -u https://your-env-name.api.aito.ai -r your-ro-api-key -w your-rw-api-key upload-batch users < users_datafile.json```
 
