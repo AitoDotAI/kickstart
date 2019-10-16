@@ -289,10 +289,10 @@ curl --request GET \
 Aito expects data in a records-oriented JSON where each row is an individual item, such as:
 ```
 [
-{"user":"Trumpbart","registered":"2018-5-30","score":-111},
-{"user":"Shbshb906","registered":"2018-7-10","score":124},
-{"user":"Creepeth","registered":"2013-4-6","score":10},
-…
+	{"user":"Trumpbart","registered":"2018-5-30","score":-111},
+	{"user":"Shbshb906","registered":"2018-7-10","score":124},
+	{"user":"Creepeth","registered":"2013-4-6","score":10},
+	…
 ]
 ```
 To convert CSV into JSON format, you may use any script or converter you like, or try the Command Line Interface discussed in the next chapter. With your data in JSON, you may now upload it to each table. This batch upload request can support up to 50 000 rows at a time. If your file contains more rows, you may use a script to loop through the data. The following curl uploads up to 50 000 rows to the “users” table:
@@ -304,10 +304,10 @@ curl --request POST \
   --header 'x-api-key: your-rw-api-key' \
   --data '
   [
-		{"user":"Trumpbart","registered":"2018-5-30","score":-111},
-		{"user":"Shbshb906","registered":"2018-7-10","score":124},
-		{"user":"Creepeth","registered":"2013-4-6","score":10}
-		...
+	{"user":"Trumpbart","registered":"2018-5-30","score":-111},
+	{"user":"Shbshb906","registered":"2018-7-10","score":124},
+	{"user":"Creepeth","registered":"2013-4-6","score":10}
+	...
   ]'
 ```
 Repeat the process for each table you wish to upload data to. To view the content of the “users” table, you may use:
