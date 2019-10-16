@@ -176,9 +176,9 @@ Very often your data is stored in a collection of connected tables. In our Reddi
 Now that we know the structure, we can start creating the database schema.
 
 ## Creating your Aito schema
-Now we define the tables, columns and their individual types and other specifications in JSON format. This important step is a little tedious but necessary for ensuring the correct format for the data. In the next chapter we introduce our Command Line Interface (currently alpha version) to automate some of this process.
+Now we define the tables, columns and their individual types and other specifications in the JSON format. This important step is a bit tedious but also necessary to ensure correct formatting of the data. In the next chapter we introduce our Command Line Interface (currently alpha version) for the automation of some parts of this process.
 
-The structure of the JSON is following:  
+The structure of the JSON:  
 ```
 {
 “schema”: {
@@ -279,14 +279,14 @@ curl --request PUT \
   }
 }'
 ```
-If there were no errors, the request sets up and returns the full schema structure. You can view your empty schema again with:
+If there were no errors, the request sets up and returns the full schema structure. You can view your schema again with:
 ```
 curl --request GET \
   --url https://your-env-name.api.aito.ai/api/v1/schema \
   --header 'content-type: application/json' \
   --header 'x-api-key: your-rw-api-key'
 ```
-## Uploading data to Aito
+## Uploading data into Aito
 Aito expects data in a records-oriented JSON where each row is an individual item, such as:
 ```
 [
@@ -296,7 +296,7 @@ Aito expects data in a records-oriented JSON where each row is an individual ite
 	…
 ]
 ```
-To convert CSV into JSON format, you may use any script or converter you like, or try the Command Line Interface discussed in the next chapter. With your data in JSON, you may now upload it to each table. This batch upload request can support up to 50 000 rows at a time. If your file contains more rows, you may use a script to loop through the data. The following curl uploads up to 50 000 rows to the “users” table:
+To convert a CSV into the JSON format, you may use any script or converter you like, or try the Command Line Interface discussed in the next chapter. With your data in JSON, you may now upload it to each table. This batch upload request can support up to 50 000 rows at a time. If your file contains more rows, you may use a script to loop through the data. The following curl request uploads up to 50 000 rows to the “users” table:
 
 ```
 curl --request POST \
@@ -311,7 +311,7 @@ curl --request POST \
 	...
   ]'
 ```
-Repeat the process for each table you wish to upload data to. To view the content of the “users” table, you may use:
+Repeat the process for each table you wish to upload data into. To view the content of the “users” table, you may use:
 ```
 curl --request POST \
   --url https://your-env-name.api.aito.ai/api/v1/_query \
@@ -325,15 +325,15 @@ curl --request POST \
 Your data is now ready for predictions!
 
 ## Using Command Line Interface
-The Command Line Interface (CLI) is a tool to introduce automation into this process. It helps you by generating the table JSONs required for schema creation, converts CSV data to JSON, and uploads data to your schema. Please do note it’s still an early alpha version. You'll need to run the commands for each data table in the schema.
+The Command Line Interface (CLI) is a tool to introduce automation into this process. It helps you by generating the table schema JSONs required for schema creation, converts CSV data to JSON, and uploads data into your Aito instance. Please do note it’s still an early alpha version. Currently you can't create a full schema with the tool by one command, you'll need to run the commands per data table in the schema.
 
 Here’s how to get started:
 1. Install Aito CLI (requires Python 3.6+) on command line: ```pip install aitoai``` https://github.com/AitoDotAI/aito-python-tools
 2. On your command line, cd to the folder with your data files
 3. Run the following command for each of your CSV data files:
-   ```aito convert -c tablefile.json -f json csv datafile.csv datafile.json```
+   ```aito convert csv -c tablefile.json --json < datafile.csv > datafile.json```
 
-The last command generates two JSON files from your CSV file. “tablefile.json” contains the structure of the table which you can copy to your schema creation request. “datafile.json” contains all the CSV data converted into JSON format for uploading. Make sure to change the file names for each CSV file you convert.
+The last command generates two JSON files from your CSV file. “tablefile.json” contains the table schema in JSON format which you can copy to your schema creation request. “datafile.json” contains all the data in the CSV converted into the JSON format for uploading data into Aito. Make sure to change the JSON file names for each CSV file you convert.
 
 To upload data with CLI, use the following command for each of your data files.
 ```aito client -u https://your-env-name.api.aito.ai -r your-ro-key -w your-rw-key upload-batch your-table-name < your-datafile.json```
