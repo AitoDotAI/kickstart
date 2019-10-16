@@ -4,7 +4,7 @@ This guide provides practical and immediately actionable steps for getting start
 # 1. Introduction
 Welcome to the kickstart guide with Aito.ai with all the necessary steps to get started! We start with looking at how Aito works when everything has already been set up, and then we see how to set everything up ourselves. To follow this guide, you may use your favorite REST client or paste the queries directly to your command line. Let’s go!
 
-# 2. Aito in Action
+# 2. What Aito does
 We’ll first show you how Aito looks like in action. We have already set up a public Aito instance for everyone to play with. 
 
 Let’s start off with a fun example where we’ll automatically detect sarcasm in Reddit discussions. Below is a snapshot of how the data looks like. The “label” column indicates whether or not the comment is sarcastic; it is the first thing we want to predict.
