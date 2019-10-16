@@ -177,8 +177,9 @@ Now that we know the structure, we can start creating the database schema.
 
 ## Creating your Aito schema
 Now we define the tables, columns and their individual types and other specifications in JSON format. This important step is a little tedious but necessary for ensuring the correct format for the data. In the next chapter we introduce our Command Line Interface (currently alpha version) to automate some of this process.
+
+The structure of the JSON is following:  
 ```
-The structure of the JSON is following:
 {
 “schema”: {
     “table1”: {
