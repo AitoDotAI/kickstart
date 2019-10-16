@@ -86,11 +86,11 @@ Being posted in the “Politics” Subreddit increases the chances that this com
 
 Go ahead and change the sentence to whatever you want and select a new subreddit. Here’s a few random subreddits for you to try:
 
-AskReddit
-nba
-science
-videos
-pcmasterrace
+- AskReddit
+- nba
+- science
+- videos
+- pcmasterrace
 
 Well done! Now, after asking Aito if there’s sarcasm in the comment, let’s ask why it thinks so. Understanding the reasoning of a prediction is critical in any Machine Learning application! To receive more information than just the prediction, add a “select” line in the query which returns the predicted label (“feature”), its probability (“$p”) and most importantly, the reasoning (“$why”). Copy the following curl:
 ```
@@ -143,7 +143,7 @@ As requested, the query returns:
     }
   }, { ...
 ```
-A lot of stuff is crammed in the response but bear with us. What’s important right now are the factors called “relatedVariableLift”. They tell us what Aito thinks during inference. Lifts represent multipliers which impact the final outcome, and according to Aito, the words “smart” and “dude” are especially likely to be sarcastic. For example, the word “smart” increases the sarcasm probability of the comment by 1.52x but being on the science subreddit decreases it by 0.39x.
+A lot of stuff is crammed in the response but bear with us. What’s important right now are the factors called “relatedVariableLift”. They tell us what Aito thinks during inference. Lifts represent multipliers which impact the final outcome, and according to Aito, the words “smart” and “dude” are especially likely to be sarcastic. For example, the word “smart” increases the sarcasm probability of the comment by 1.52x but being on the "science" subreddit decreases it by 0.39x.
 
 Another very common type of inference is recommendation. With the below curl, Aito will predict the subreddit where a specific user is least likely to be sarcastic. Laid out, it says “recommend me a subreddit where the value of ‘label’ is likely 0 when the value of ‘author’ in the ‘comments’ table is ‘Creepeth’”.
 ```
@@ -160,6 +160,9 @@ curl --request POST \
 	"goal": {"label": 0}
 }'
 ```
+
+Turns out this user is least likely to be sarcastic on the "AskReddit" subreddit.
+
 # 3. Setting up your own Aito
 Now we take a few steps back and start from uploading your own data into a schema. Or in case you don’t right now have suitable data available, you may download and use the same CSV files we use in this demo. The demo files are found in this repositry: "reddit_sample.csv" contains a sample of the full comments dataset and "users.csv" is a completely fabricated table to represent the Reddit users. To keep following the guide, you’ll need API keys which allow you to access your Aito instance. If you don’t have an API key yet, please contact us here.
 
