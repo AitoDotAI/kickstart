@@ -336,7 +336,7 @@ Here’s how to get started:
 
 The last command generates two JSON files from your CSV file. “tablefile.json” contains the table schema in JSON format which you can copy to your schema creation request. “datafile.json” contains all the data in the CSV converted into the JSON format for uploading data into Aito. Make sure to change the JSON file names for each CSV file you convert.
 
-To upload data with CLI, use the following command for each of your data files.
+To upload data with CLI, use the following command for each of your data files.  
 ```aito client -u https://your-env-name.api.aito.ai -r your-ro-key -w your-rw-key upload-batch your-table-name < your-datafile.json```
 
 This might take a while but you’ll be able to follow the progress on the command line.
