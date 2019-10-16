@@ -327,10 +327,11 @@ Your data is now ready for predictions!
 ## Using Command Line Interface
 The Command Line Interface (CLI) is a tool to introduce automation into this process. It helps you by generating the table schema JSONs required for schema creation, converts CSV data to JSON, and uploads data into your Aito instance. Please do note it’s still an early alpha version. Currently you can't create a full schema with the tool by one command, you'll need to run the commands per data table in the schema.
 
-Here’s how to get started:
-1. Install Aito CLI (requires Python 3.6+) on command line: ```pip install aitoai``` https://github.com/AitoDotAI/aito-python-tools
-2. On your command line, cd to the folder with your data files
-3. Run the following command for each of your CSV data files:
+Here’s how to get started:  
+1. Install Aito CLI (requires Python 3.6+) on command line:  
+  ```pip install aitoai``` https://github.com/AitoDotAI/aito-python-tools
+2. On your command line, cd to the folder which contains your data files.
+3. Run the following command for each of your CSV data files:  
    ```aito convert csv -c tablefile.json --json < datafile.csv > datafile.json```
 
 The last command generates two JSON files from your CSV file. “tablefile.json” contains the table schema in JSON format which you can copy to your schema creation request. “datafile.json” contains all the data in the CSV converted into the JSON format for uploading data into Aito. Make sure to change the JSON file names for each CSV file you convert.
