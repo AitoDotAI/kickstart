@@ -14,7 +14,7 @@ Let’s start off with a fun example where we’ll automatically detect sarcasm 
 To predict if the sentence “dude you are so smart” is sarcastic on Reddit, simply copy the following query to your command line and hit enter (pay attention to the bolded parts, they are our playground):
 
 ```
-curl --request POST \
+curl --request *POST* \
   --url https://aito-reddit-sarcasm.api.aito.ai/api/v1/_predict \
   --header 'content-type: application/json' \
   --header 'x-api-key: 9Ik1wJQ1tq86vMQG7taDB2cgfpSogUFu69lBGTnV' \
