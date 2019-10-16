@@ -325,21 +325,37 @@ curl --request POST \
 Your data is now ready for predictions!
 
 ## Using Command Line Interface
-The Command Line Interface (CLI) is a tool to introduce automation into this process. It helps you by generating the table schema JSONs required for schema creation, converts CSV data to JSON, and uploads data into your Aito instance. Please do note it’s still an early alpha version. Currently you can't create a full schema with the tool by one command, you'll need to run the commands per data table in the schema.
+The Command Line Interface (CLI) is a tool to introduce automation into this process. It helps you by generating the table schema JSONs required for schema creation, converts CSV data to JSON, and uploads data into your Aito instance. Please do note it’s still an early alpha version. Currently you can't create a full schema with the tool by one command, you'll need to run the commands per data table.
 
 Here’s how to get started:  
 1. Install Aito CLI (requires Python 3.6+) on command line:  
   ```pip install aitoai``` https://github.com/AitoDotAI/aito-python-tools
 2. On your command line, cd to the folder which contains your data files.
 3. Run the following command for each of your CSV data files:  
-   ```aito convert csv -c tablefile.json --json < datafile.csv > datafile.json```
+   ```aito convert csv -c schemafile.json --json < datafile.csv > datafile.json```
 
-The last command generates two JSON files from your CSV file. “tablefile.json” contains the table schema in JSON format which you can copy to your schema creation request. “datafile.json” contains all the data in the CSV converted into the JSON format for uploading data into Aito. Make sure to change the JSON file names for each CSV file you convert.
+The last command generates two JSON files from your CSV file. “schemafile.json” contains the table schema in JSON format which you can copy to your schema creation request. “datafile.json” contains all the data in the CSV converted into the JSON format for uploading data into Aito. Make sure to change the JSON file names for each CSV file you convert.
 
-To upload data with CLI, use the following command for each of your data files.  
-```aito client -u https://your-env-name.api.aito.ai -r your-ro-key -w your-rw-key upload-batch your-table-name < your-datafile.json```
+To create the table schema with the CLI, use the following command for each of your table schema files:  
+```aito client -u https://your-env-name.api.aito.ai -r your-ro-api-key -w your-rw-api-key create-table your-table-name < your-schemafile.json ```
+
+After creating the table schemas use the following command to upload each of your data files:  
+```aito client -u https://your-env-name.api.aito.ai -r your-ro-api-key -w your-rw-api-key upload-batch your-table-name < your-datafile.json```
 
 This might take a while but you’ll be able to follow the progress on the command line.
 
+### CLI examples using the Reddit data
+Create the needed JSON files from the CSVs:  
+```aito convert csv -c comments_schemafile.json --json < reddit_sample.csv > comments_datafile.json```  
+```aito convert csv -c users_schemafile.json --json < users.csv > users_datafile.json```  
+
+Create users and comments table schemas into Aito:  
+```aito client -u https://your-env-name.api.aito.ai -r your-ro-api-key -w your-rw-api-key create-table comments < comments_schemafile.json```  
+```aito client -u https://your-env-name.api.aito.ai -r your-ro-api-key -w your-rw-api-key create-table users < users_schemafile.json```
+
+Upload comment and user data into Aito:  
+```aito client -u https://your-env-name.api.aito.ai -r your-ro-api-key -w your-rw-api-key upload-batch comments < comments_datafile.json```  
+```aito client -u https://your-env-name.api.aito.ai -r your-ro-api-key -w your-rw-api-key upload-batch users < users_datafile.json```
+
 ## Inference
-Finally your schema is ready for the fun part. Try again the prediction queries of the first chapter but this time in your own environment. Enjoy!
+Finally your data is ready for the fun part. Try again the prediction queries of the first chapter but this time in your own environment. Enjoy!
