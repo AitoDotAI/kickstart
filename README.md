@@ -59,7 +59,7 @@ curl --request POST \
     "from": "comments",
     "where": {
       "comment": "dude you are so smart",
-	     "subreddit": "politics"
+      "subreddit": "politics"
     },
     "predict": "label"
   }
@@ -102,10 +102,10 @@ curl --request POST \
     "from": "comments",
     "where": {
       "comment": "dude you are so smart",
-	     "subreddit": "politics"
+      "subreddit": "politics"
     },
-	  "select": ["feature","$p","$why"],
-   "predict": "label"
+    "select": ["feature","$p","$why"],
+    "predict": "label"
   }
 '
 ```
@@ -152,12 +152,12 @@ curl --request POST \
   --header 'content-type: application/json' \
   --header 'x-api-key: 9Ik1wJQ1tq86vMQG7taDB2cgfpSogUFu69lBGTnV' \
   --data '{
-	"from": "comments",
-	"where": {
-		"author": "Creepeth"
+    "from": "comments",
+    "where": {
+        "author": "Creepeth"
 	},
-	"recommend": "subreddit",
-	"goal": {"label": 0}
+    "recommend": "subreddit",
+    "goal": {"label": 0}
 }'
 ```
 
@@ -181,22 +181,22 @@ Now we define the tables, columns and their individual types and other specifica
 The structure of the JSON is following:
 {
 “schema”: {
-		“table1”: {
-			“columns”: {
-				“column1”: {“type”: “Data type”},
-        “column2”: {“type”: “Data type”, “analyzer”: “english”},
+    “table1”: {
+        “columns”: {
+            “column1”: {“type”: “Data type”},
+            “column2”: {“type”: “Data type”, “analyzer”: “english”},
         ...
         },
         “type”: “table”
       },
-      “table2”: {
+    “table2”: {
         “columns”: {
-          “column1”: {“type”: “Data type”, “link”: “table1.column2”},
-        “column2”: {“type”: “Data type”},
-        …
+            “column1”: {“type”: “Data type”, “link”: “table1.column2”},
+            “column2”: {“type”: “Data type”},
+        ...
+        },
+        “type”: “table”
       },
-      “type”: “table”
-  },
     ...
   }
 }
