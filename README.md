@@ -102,7 +102,7 @@ curl --request POST \
     "from": "comments",
     "where": {
       "comment": "dude you are so smart",
-      "subreddit": "politics"
+      "subreddit": "science"
     },
     "select": ["feature","$p","$why"],
     "predict": "label"
