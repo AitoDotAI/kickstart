@@ -181,23 +181,23 @@ Now we define the tables, columns and their individual types and other specifica
 The structure of the JSON:  
 ```
 {
-“schema”: {
-    “table1”: {
-        “columns”: {
-            “column1”: {“type”: “Data type”},
-            “column2”: {“type”: “Data type”, “analyzer”: “english”},
+  "schema": {
+    "table1": {
+      "columns": {
+        "column1": {"type": "Data type"},
+        "column2": {"type": "Data type", "analyzer": "english"},
         ...
-        },
-        “type”: “table”
       },
-    “table2”: {
-        “columns”: {
-            “column1”: {“type”: “Data type”, “link”: “table1.column2”},
-            “column2”: {“type”: “Data type”},
+      "type": "table"
+    },
+    "table2": {
+      "columns": {
+        "column1": {"type": "Data type", "link": "table1.column2"},
+        "column2": {"type": "Data type"},
         ...
-        },
-        “type”: “table”
       },
+      "type": "table"
+    },
     ...
   }
 }
